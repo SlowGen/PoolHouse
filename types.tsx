@@ -4,13 +4,13 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-  TabTwo: undefined;
+  Welcome: undefined;
   EnterTips: undefined;
   Distribution: undefined
 };
 
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+export type WelcomeParamList = {
+  WelcomeScreen: undefined;
 };
 
 export type EnterTipsParamList = {

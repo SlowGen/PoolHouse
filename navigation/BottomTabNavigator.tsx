@@ -5,10 +5,10 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import WelcomeScreen from '../screens/WelcomeScreen';
 import EnterTipsScreen from '../screens/EnterTipsScreen'
 import DistributionScreen from '../screens/DistributionScreen'
-import { BottomTabParamList, TabTwoParamList, EnterTipsParamList, DistributionParamList } from '../types';
+import { BottomTabParamList, WelcomeParamList, EnterTipsParamList, DistributionParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -17,11 +17,11 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="EnterTips"
+      initialRouteName="Welcome"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
+        name="Welcome"
+        component={WelcomeNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
@@ -31,6 +31,9 @@ export default function BottomTabNavigator() {
         component={EnterTipsNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen name="Distribution" component={DistributionNavigator} options={{ tabBarIcon: ({ color }) => <TabBarIcon name='ios-code' color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -46,17 +49,17 @@ function TabBarIcon(props: { name: string; color: string }) {
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const WelcomeStack = createStackNavigator<WelcomeParamList>();
 
-function TabTwoNavigator() {
+function WelcomeNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+    <WelcomeStack.Navigator>
+      <WelcomeStack.Screen
+        name="WelcomeScreen"
+        component={WelcomeScreen}
+        options={{ headerTitle: 'Welcome' }}
       />
-    </TabTwoStack.Navigator>
+    </WelcomeStack.Navigator>
   );
 }
 
