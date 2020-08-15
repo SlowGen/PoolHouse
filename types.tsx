@@ -20,3 +20,9 @@ export type EnterTipsParamList = {
 export type DistributionParamList = {
   DistributionScreen: undefined;
 };
+
+export type FormInputs = {
+  name: string,
+  metric: number,
+  amount: number
+};

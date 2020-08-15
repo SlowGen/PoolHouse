@@ -6,16 +6,21 @@ export default {
     screens: {
       Root: {
         screens: {
-          TabOne: {
+          Welcome: {
             screens: {
-              TabOneScreen: 'one',
+              WelcomeScreen: 'Welcome',
             },
           },
-          TabTwo: {
+          EnterTips: {
             screens: {
-              TabTwoScreen: 'two',
+              EnterTipsScreen: 'EnterTips',
             },
           },
+          Distribution: {
+            screens: {
+              DistributionScreen: 'Distribution'
+            }
+          }
         },
       },
       NotFound: '*',
