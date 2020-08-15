@@ -6,15 +6,14 @@ import { useForm, Controller } from 'react-hook-form'
 // import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 import { FormInputs } from '../types'
-import serverArray from '../assets/testData'
 
 export default function EnterTipsForm() {
   const { control, handleSubmit, errors } = useForm<FormInputs>();
 
   const onSubmit = (data: FormInputs) => console.log(data);
-  console.log(serverArray)
+
   return (
-    //for now we are hardcoding 3 servers in, will change to a dynamic form that accomidates user-selected number of servers
+    //for now we are hardcoding 4 servers in, will change to a dynamic form that accomodates user-selected number of servers
 
     <View>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -30,9 +29,9 @@ export default function EnterTipsForm() {
               value={value}
             />
             )}
-            name="name"
+            name="name1"
             rules={{ required: false }}
-            defaultValue="server"
+            defaultValue="server1"
           />
           <Text>Metric:</Text>
           <Controller
@@ -45,11 +44,11 @@ export default function EnterTipsForm() {
               value={value}
             />
             )}
-            name="metric"
+            name="metric1"
             rules={{ required: true, min: 0 }}
             defaultValue="1"
           />
-          {errors.metric && <Text>This is required. If server is to receive no cut, enter '0'</Text>}
+          {errors.metric1 && <Text>This is required. If server is to receive no cut, enter '0'</Text>}
           <Text>Amount Contributed:</Text>
           <Controller
             control={control}
@@ -61,11 +60,11 @@ export default function EnterTipsForm() {
                 value={value}
               />
             )}
-            name="amount"
+            name="amount1"
             rules={{ required: true }}
             defaultValue="0"
           />
-          {errors.amount && <Text>This is required. If server contribution is zero, enter '0'</Text>}
+          {errors.amount1 && <Text>This is required. If server contribution is zero, enter '0'</Text>}
         </View>
         <View>
           <Text>Server Name:</Text>
@@ -79,9 +78,9 @@ export default function EnterTipsForm() {
               value={value}
             />
             )}
-            name="name"
+            name="name2"
             rules={{ required: false }}
-            defaultValue="server"
+            defaultValue="server2"
           />
           <Text>Metric:</Text>
           <Controller
@@ -94,11 +93,11 @@ export default function EnterTipsForm() {
               value={value}
             />
             )}
-            name="metric"
+            name="metric2"
             rules={{ required: true, min: 0 }}
             defaultValue="1"
           />
-          {errors.metric && <Text>This is required. If server is to receive no cut, enter '0'</Text>}
+          {errors.metric2 && <Text>This is required. If server is to receive no cut, enter '0'</Text>}
           <Text>Amount Contributed:</Text>
           <Controller
             control={control}
@@ -110,11 +109,11 @@ export default function EnterTipsForm() {
                 value={value}
               />
             )}
-            name="amount"
+            name="amount2"
             rules={{ required: true }}
             defaultValue="0"
           />
-          {errors.amount && <Text>This is required. If server contribution is zero, enter '0'</Text>}
+          {errors.amount2 && <Text>This is required. If server contribution is zero, enter '0'</Text>}
         </View>
         <View>
           <Text>Server Name:</Text>
@@ -128,9 +127,9 @@ export default function EnterTipsForm() {
               value={value}
             />
             )}
-            name="name"
+            name="name3"
             rules={{ required: false }}
-            defaultValue="server"
+            defaultValue="server3"
           />
           <Text>Metric:</Text>
           <Controller
@@ -143,11 +142,11 @@ export default function EnterTipsForm() {
               value={value}
             />
             )}
-            name="metric"
+            name="metric3"
             rules={{ required: true, min: 0 }}
             defaultValue="1"
           />
-          {errors.metric && <Text>This is required. If server is to receive no cut, enter '0'</Text>}
+          {errors.metric3 && <Text>This is required. If server is to receive no cut, enter '0'</Text>}
           <Text>Amount Contributed:</Text>
           <Controller
             control={control}
@@ -159,11 +158,11 @@ export default function EnterTipsForm() {
                 value={value}
               />
             )}
-            name="amount"
+            name="amount3"
             rules={{ required: true }}
             defaultValue="0"
           />
-          {errors.amount && <Text>This is required. If server contribution is zero, enter '0'</Text>}
+          {errors.amount3 && <Text>This is required. If server contribution is zero, enter '0'</Text>}
         </View>
         <View>
           <Text>Server Name:</Text>
@@ -177,9 +176,9 @@ export default function EnterTipsForm() {
               value={value}
             />
             )}
-            name="name"
+            name="name4"
             rules={{ required: false }}
-            defaultValue="server"
+            defaultValue="server4"
           />
           <Text>Metric:</Text>
           <Controller
@@ -192,11 +191,11 @@ export default function EnterTipsForm() {
               value={value}
             />
             )}
-            name="metric"
+            name="metric4"
             rules={{ required: true, min: 0 }}
             defaultValue="1"
           />
-          {errors.metric && <Text>This is required. If server is to receive no cut, enter '0'</Text>}
+          {errors.metric4 && <Text>This is required. If server is to receive no cut, enter '0'</Text>}
           <Text>Amount Contributed:</Text>
           <Controller
             control={control}
@@ -208,11 +207,11 @@ export default function EnterTipsForm() {
                 value={value}
               />
             )}
-            name="amount"
+            name="amount4"
             rules={{ required: true }}
             defaultValue="0"
           />
-          {errors.amount && <Text>This is required. If server contribution is zero, enter '0'</Text>}
+          {errors.amount4 && <Text>This is required. If server contribution is zero, enter '0'</Text>}
         </View>
 
       <Button title="Calculate" onPress={handleSubmit(onSubmit)} />
