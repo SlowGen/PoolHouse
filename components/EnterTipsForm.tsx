@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { StyleSheet, TextInput, Button, ScrollView } from 'react-native';
 import { useForm, Controller } from 'react-hook-form'
+import { useNavigation } from '@react-navigation/native';
 
 // import Colors from '../constants/Colors';
 // import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 import { FormInputs } from '../types'
+import DistributionScreen from '../screens/DistributionScreen';
 
 export default function EnterTipsForm() {
 
@@ -38,10 +40,11 @@ export default function EnterTipsForm() {
   }
 
   const { control, handleSubmit, errors } = useForm<FormInputs>();
-
+  const navigation = useNavigation()
   const onSubmit = (data: FormInputs) => {
     console.log('data', data)
     console.log('formdata', formData)
+    navigation.navigate('Distribution')
   };
 
   return (
