@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TextInput, Button } from 'react-native';
+import { StyleSheet, TextInput, Button, ScrollView } from 'react-native';
 import { useForm, Controller } from 'react-hook-form'
 
 // import Colors from '../constants/Colors';
@@ -15,8 +15,7 @@ export default function EnterTipsForm() {
   return (
     //for now we are hardcoding 4 servers in, will change to a dynamic form that accomodates user-selected number of servers
 
-    <View>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <ScrollView>
         <View>
           <Text>Server Name:</Text>
           <Controller
@@ -215,9 +214,7 @@ export default function EnterTipsForm() {
         </View>
 
       <Button title="Calculate" onPress={handleSubmit(onSubmit)} />
-
-      </form>
-    </View>
+    </ScrollView>
   )
 }
 
