@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, TextInput, Button, ScrollView } from 'react-native';
 import { useForm, Controller } from 'react-hook-form'
 
@@ -8,12 +8,44 @@ import { Text, View } from './Themed';
 import { FormInputs } from '../types'
 
 export default function EnterTipsForm() {
+
+  const [ server1, setServer1 ] = useState('')
+  const [ server2, setServer2 ] = useState('')
+  const [ server3, setServer3 ] = useState('')
+  const [ server4, setServer4 ] = useState('')
+  const [ metric1, setMetric1 ] = useState('')
+  const [ metric2, setMetric2 ] = useState('')
+  const [ metric3, setMetric3 ] = useState('')
+  const [ metric4, setMetric4 ] = useState('')
+  const [ amount1, setAmount1 ] = useState('')
+  const [ amount2, setAmount2 ] = useState('')
+  const [ amount3, setAmount3 ] = useState('')
+  const [ amount4, setAmount4 ] = useState('')
+
+  const formData = {
+    server1: server1,
+    server2: server2,
+    server3: server3,
+    server4: server4,
+    metric1: metric1,
+    metric2: metric2,
+    metric3: metric3,
+    metric4: metric4,
+    amount1: amount1,
+    amount2: amount2,
+    amount3: amount3,
+    amount4: amount4
+  }
+
   const { control, handleSubmit, errors } = useForm<FormInputs>();
 
-  const onSubmit = (data: FormInputs) => console.log(data);
+  const onSubmit = (data: FormInputs) => {
+    console.log('data', data)
+    console.log('formdata', formData)
+  };
 
   return (
-    //for now we are hardcoding 4 servers in, will change to a dynamic form that accomodates user-selected number of servers
+    //for now we are hardcoding 4 servers in, will change to a dynamic form that accomodates user-selected number of servers (when we learn how to do that)
 
     <ScrollView>
         <View>
@@ -24,7 +56,10 @@ export default function EnterTipsForm() {
             <TextInput
               style={styles.input}
               onBlur={onBlur}
-              onChangeText={value => onChange(value)}
+              onChangeText={value => {
+                setServer1(value)
+                onChange(value)
+              }}
               value={value}
             />
             )}
@@ -39,12 +74,15 @@ export default function EnterTipsForm() {
             <TextInput
               style={styles.input}
               onBlur={onBlur}
-              onChangeText={value => onChange(value)}
+              onChangeText={value => {
+                setMetric1(value)
+                onChange(value)
+              }}
               value={value}
             />
             )}
             name="metric1"
-            rules={{ required: true, min: 0 }}
+            rules={{ required: true }}
             defaultValue="1"
           />
           {errors.metric1 && <Text>This is required. If server is to receive no cut, enter '0'</Text>}
@@ -55,7 +93,10 @@ export default function EnterTipsForm() {
               <TextInput
                 style={styles.input}
                 onBlur={onBlur}
-                onChangeText={value => onChange(value)}
+                onChangeText={value => {
+                  setAmount1(value)
+                  onChange(value)
+                }}
                 value={value}
               />
             )}
@@ -73,7 +114,10 @@ export default function EnterTipsForm() {
             <TextInput
               style={styles.input}
               onBlur={onBlur}
-              onChangeText={value => onChange(value)}
+              onChangeText={value => {
+                setServer2(value)
+                onChange(value)
+              }}
               value={value}
             />
             )}
@@ -88,12 +132,15 @@ export default function EnterTipsForm() {
             <TextInput
               style={styles.input}
               onBlur={onBlur}
-              onChangeText={value => onChange(value)}
+              onChangeText={value => {
+                setMetric2(value)
+                onChange(value)
+              }}
               value={value}
             />
             )}
             name="metric2"
-            rules={{ required: true, min: 0 }}
+            rules={{ required: true }}
             defaultValue="1"
           />
           {errors.metric2 && <Text>This is required. If server is to receive no cut, enter '0'</Text>}
@@ -104,7 +151,10 @@ export default function EnterTipsForm() {
               <TextInput
                 style={styles.input}
                 onBlur={onBlur}
-                onChangeText={value => onChange(value)}
+                onChangeText={value => {
+                  setAmount2(value)
+                  onChange(value)
+                }}
                 value={value}
               />
             )}
@@ -122,7 +172,10 @@ export default function EnterTipsForm() {
             <TextInput
               style={styles.input}
               onBlur={onBlur}
-              onChangeText={value => onChange(value)}
+              onChangeText={value => {
+                setServer3(value)
+                onChange(value)
+              }}
               value={value}
             />
             )}
@@ -137,12 +190,15 @@ export default function EnterTipsForm() {
             <TextInput
               style={styles.input}
               onBlur={onBlur}
-              onChangeText={value => onChange(value)}
+              onChangeText={value => {
+                setMetric3(value)
+                onChange(value)
+              }}
               value={value}
             />
             )}
             name="metric3"
-            rules={{ required: true, min: 0 }}
+            rules={{ required: true }}
             defaultValue="1"
           />
           {errors.metric3 && <Text>This is required. If server is to receive no cut, enter '0'</Text>}
@@ -153,7 +209,10 @@ export default function EnterTipsForm() {
               <TextInput
                 style={styles.input}
                 onBlur={onBlur}
-                onChangeText={value => onChange(value)}
+                onChangeText={value => {
+                  setAmount3(value)
+                  onChange(value)
+                }}
                 value={value}
               />
             )}
@@ -171,7 +230,10 @@ export default function EnterTipsForm() {
             <TextInput
               style={styles.input}
               onBlur={onBlur}
-              onChangeText={value => onChange(value)}
+              onChangeText={value => {
+                setServer4(value)
+                onChange(value)
+              }}
               value={value}
             />
             )}
@@ -186,12 +248,15 @@ export default function EnterTipsForm() {
             <TextInput
               style={styles.input}
               onBlur={onBlur}
-              onChangeText={value => onChange(value)}
+              onChangeText={value => {
+                setMetric4(value)
+                onChange(value)
+              }}
               value={value}
             />
             )}
             name="metric4"
-            rules={{ required: true, min: 0 }}
+            rules={{ required: true }}
             defaultValue="1"
           />
           {errors.metric4 && <Text>This is required. If server is to receive no cut, enter '0'</Text>}
@@ -202,7 +267,10 @@ export default function EnterTipsForm() {
               <TextInput
                 style={styles.input}
                 onBlur={onBlur}
-                onChangeText={value => onChange(value)}
+                onChangeText={value => {
+                  setAmount4(value)
+                  onChange(value)
+                }}
                 value={value}
               />
             )}

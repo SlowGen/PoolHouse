@@ -23,15 +23,15 @@ export type DistributionParamList = {
 
 export type FormInputs = {
   name1: string,
-  metric1: number,
-  amount1: number,
+  metric1: string,
+  amount1: string,
   name2: string,
-  metric2: number,
-  amount2: number,
+  metric2: string,
+  amount2: string,
   name3: string,
-  metric3: number,
-  amount3: number,
+  metric3: string,
+  amount3: string,
   name4: string,
-  metric4: number,
-  amount4: number,
+  metric4: string,
+  amount4: string,
 };
