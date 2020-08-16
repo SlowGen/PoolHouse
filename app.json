@@ -23,6 +23,8 @@
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
-    }
+    },
+    "description": "Little tip tool for servers and bartenders. Can enter up to 4 staff members and set custom tip out for support staff.",
+    "githubUrl": "https://github.com/SlowGen/TipSplit"
   }
 }
