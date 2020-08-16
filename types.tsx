@@ -17,10 +17,6 @@ export type EnterTipsParamList = {
   EnterTipsScreen: undefined;
 };
 
-export type DistributionParamList = {
-  DistributionScreen: undefined;
-};
-
 export type FormInputs = {
   name1: string,
   metric1: string,
@@ -37,6 +33,6 @@ export type FormInputs = {
   tipOut: string
 };
 
-export type FormData = {
-  Formdata: undefined
-}
+// export type FormData = {
+//   Formdata: undefined
+// }

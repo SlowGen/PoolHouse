@@ -7,8 +7,7 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import EnterTipsScreen from '../screens/EnterTipsScreen'
-import DistributionScreen from '../screens/DistributionScreen'
-import { BottomTabParamList, WelcomeParamList, EnterTipsParamList, DistributionParamList } from '../types';
+import { BottomTabParamList, WelcomeParamList, EnterTipsParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -31,9 +30,6 @@ export default function BottomTabNavigator() {
         component={EnterTipsNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
-        }}
-      />
-      <BottomTab.Screen name="Distribution" component={DistributionNavigator} options={{ tabBarIcon: ({ color }) => <TabBarIcon name='ios-code' color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -75,14 +71,4 @@ function EnterTipsNavigator() {
       />
     </EnterTipsStack.Navigator>
   );
-}
-
-const DistributionStack = createStackNavigator<DistributionParamList>();
-
-function DistributionNavigator() {
-  return (
-    <DistributionStack.Navigator>
-      <DistributionStack.Screen name="DistributionScreen" component={DistributionScreen} options={{headerTitle: 'Distribution' }} />
-    </DistributionStack.Navigator>
-  )
 }

@@ -39,11 +39,11 @@ export default function EnterTipsForm() {
   let metTotal = totalMetric(m1, m2, m3, m4)
   let dollarsPerMetric = amtPerMet(tipTotal, metTotal)
 
-  let s1 = Math.floor(m1 * dollarsPerMetric) /100
+  let s1 = Math.floor(m1 * dollarsPerMetric) / 100
   let s2 = Math.floor(m2 * dollarsPerMetric) / 100
   let s3 = Math.floor(m3 * dollarsPerMetric) / 100
   let s4 = Math.floor(m4 * dollarsPerMetric) / 100
-  let toT = Math.floor(tipOutPct * tipTotal) / 10000
+  let toT = Math.floor((tipOutPct * tipTotal / 100) / 100)
 
 
   const { control, handleSubmit, errors } = useForm<FormInputs>();
@@ -51,7 +51,6 @@ export default function EnterTipsForm() {
     console.log('data', data)
   };
 
-  // console.log(Number(metric1), dollarsPerMetric)
   return (
     //for now we are hardcoding 4 servers in, will change to a dynamic form that accomodates user-selected number of servers (when we learn how to do that)
 
