@@ -34,4 +34,9 @@ export type FormInputs = {
   name4: string,
   metric4: string,
   amount4: string,
+  tipOut: string
 };
+
+export type FormData = {
+  Formdata: undefined
+}

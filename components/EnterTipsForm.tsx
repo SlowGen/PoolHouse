@@ -1,58 +1,63 @@
 import React, { useState } from 'react';
 import { StyleSheet, TextInput, Button, ScrollView } from 'react-native';
 import { useForm, Controller } from 'react-hook-form'
-import { useNavigation } from '@react-navigation/native';
 
-// import Colors from '../constants/Colors';
-// import { MonoText } from './StyledText';
+import { totalTips, totalMetric, amtPerMet } from '../constants/helpers'
 import { Text, View } from './Themed';
 import { FormInputs } from '../types'
-import DistributionScreen from '../screens/DistributionScreen';
 
 export default function EnterTipsForm() {
 
-  const [ server1, setServer1 ] = useState('')
-  const [ server2, setServer2 ] = useState('')
-  const [ server3, setServer3 ] = useState('')
-  const [ server4, setServer4 ] = useState('')
-  const [ metric1, setMetric1 ] = useState('')
-  const [ metric2, setMetric2 ] = useState('')
-  const [ metric3, setMetric3 ] = useState('')
-  const [ metric4, setMetric4 ] = useState('')
-  const [ amount1, setAmount1 ] = useState('')
-  const [ amount2, setAmount2 ] = useState('')
-  const [ amount3, setAmount3 ] = useState('')
-  const [ amount4, setAmount4 ] = useState('')
+  const [ server1, setServer1 ] = useState('server1')
+  const [ server2, setServer2 ] = useState('server2')
+  const [ server3, setServer3 ] = useState('server3')
+  const [ server4, setServer4 ] = useState('server4')
+  const [ metric1, setMetric1 ] = useState('1')
+  const [ metric2, setMetric2 ] = useState('1')
+  const [ metric3, setMetric3 ] = useState('1')
+  const [ metric4, setMetric4 ] = useState('1')
+  const [ amount1, setAmount1 ] = useState('0')
+  const [ amount2, setAmount2 ] = useState('0')
+  const [ amount3, setAmount3 ] = useState('0')
+  const [ amount4, setAmount4 ] = useState('0')
+  const [ tipOut, setTipOut ] = useState('25')
 
-  const formData = {
-    server1: server1,
-    server2: server2,
-    server3: server3,
-    server4: server4,
-    metric1: metric1,
-    metric2: metric2,
-    metric3: metric3,
-    metric4: metric4,
-    amount1: amount1,
-    amount2: amount2,
-    amount3: amount3,
-    amount4: amount4
-  }
+  const a1 = Number(amount1)
+  const a2 = Number(amount2)
+  const a3 = Number(amount3)
+  const a4 = Number(amount4)
+
+  const m1 = Number(metric1)
+  const m2 = Number(metric2)
+  const m3 = Number(metric3)
+  const m4 = Number(metric4)
+
+  const tipOutPct = Number(tipOut)
+
+
+  let tipTotal = totalTips(a1, a2, a3, a4, tipOutPct)
+  let metTotal = totalMetric(m1, m2, m3, m4)
+  let dollarsPerMetric = amtPerMet(tipTotal, metTotal)
+
+  let s1 = Math.floor(m1 * dollarsPerMetric) /100
+  let s2 = Math.floor(m2 * dollarsPerMetric) / 100
+  let s3 = Math.floor(m3 * dollarsPerMetric) / 100
+  let s4 = Math.floor(m4 * dollarsPerMetric) / 100
+  let toT = Math.floor(tipOutPct * tipTotal) / 10000
+
 
   const { control, handleSubmit, errors } = useForm<FormInputs>();
-  const navigation = useNavigation()
   const onSubmit = (data: FormInputs) => {
     console.log('data', data)
-    console.log('formdata', formData)
-    navigation.navigate('Distribution')
   };
 
+  // console.log(Number(metric1), dollarsPerMetric)
   return (
     //for now we are hardcoding 4 servers in, will change to a dynamic form that accomodates user-selected number of servers (when we learn how to do that)
 
     <ScrollView>
-        <View>
-          <Text>Server Name:</Text>
+        <View style={styles.container}>
+          <Text>Name:
           <Controller
             control={control}
             render={({ onChange, onBlur, value }) => (
@@ -69,8 +74,8 @@ export default function EnterTipsForm() {
             name="name1"
             rules={{ required: false }}
             defaultValue="server1"
-          />
-          <Text>Metric:</Text>
+          /></Text>
+          <Text>Metric:
           <Controller
             control={control}
             render={({ onChange, onBlur, value }) => (
@@ -87,9 +92,9 @@ export default function EnterTipsForm() {
             name="metric1"
             rules={{ required: true }}
             defaultValue="1"
-          />
+          /></Text>
           {errors.metric1 && <Text>This is required. If server is to receive no cut, enter '0'</Text>}
-          <Text>Amount Contributed:</Text>
+          <Text>Amount:
           <Controller
             control={control}
             render={({ onChange, onBlur, value }) => (
@@ -106,11 +111,11 @@ export default function EnterTipsForm() {
             name="amount1"
             rules={{ required: true }}
             defaultValue="0"
-          />
+          /></Text>
           {errors.amount1 && <Text>This is required. If server contribution is zero, enter '0'</Text>}
         </View>
-        <View>
-          <Text>Server Name:</Text>
+        <View style={styles.container}>
+          <Text>Name:
           <Controller
             control={control}
             render={({ onChange, onBlur, value }) => (
@@ -127,8 +132,8 @@ export default function EnterTipsForm() {
             name="name2"
             rules={{ required: false }}
             defaultValue="server2"
-          />
-          <Text>Metric:</Text>
+          /></Text>
+          <Text>Metric:
           <Controller
             control={control}
             render={({ onChange, onBlur, value }) => (
@@ -145,9 +150,9 @@ export default function EnterTipsForm() {
             name="metric2"
             rules={{ required: true }}
             defaultValue="1"
-          />
+          /></Text>
           {errors.metric2 && <Text>This is required. If server is to receive no cut, enter '0'</Text>}
-          <Text>Amount Contributed:</Text>
+          <Text>Amount:
           <Controller
             control={control}
             render={({ onChange, onBlur, value }) => (
@@ -164,11 +169,11 @@ export default function EnterTipsForm() {
             name="amount2"
             rules={{ required: true }}
             defaultValue="0"
-          />
+          /></Text>
           {errors.amount2 && <Text>This is required. If server contribution is zero, enter '0'</Text>}
         </View>
-        <View>
-          <Text>Server Name:</Text>
+        <View style={styles.container}>
+          <Text>Name:
           <Controller
             control={control}
             render={({ onChange, onBlur, value }) => (
@@ -185,8 +190,8 @@ export default function EnterTipsForm() {
             name="name3"
             rules={{ required: false }}
             defaultValue="server3"
-          />
-          <Text>Metric:</Text>
+          /></Text>
+          <Text>Metric:
           <Controller
             control={control}
             render={({ onChange, onBlur, value }) => (
@@ -203,9 +208,9 @@ export default function EnterTipsForm() {
             name="metric3"
             rules={{ required: true }}
             defaultValue="1"
-          />
+          /></Text>
           {errors.metric3 && <Text>This is required. If server is to receive no cut, enter '0'</Text>}
-          <Text>Amount Contributed:</Text>
+          <Text>Amount:
           <Controller
             control={control}
             render={({ onChange, onBlur, value }) => (
@@ -222,11 +227,11 @@ export default function EnterTipsForm() {
             name="amount3"
             rules={{ required: true }}
             defaultValue="0"
-          />
+          /></Text>
           {errors.amount3 && <Text>This is required. If server contribution is zero, enter '0'</Text>}
         </View>
-        <View>
-          <Text>Server Name:</Text>
+        <View style={styles.container}>
+          <Text>Name:
           <Controller
             control={control}
             render={({ onChange, onBlur, value }) => (
@@ -243,8 +248,8 @@ export default function EnterTipsForm() {
             name="name4"
             rules={{ required: false }}
             defaultValue="server4"
-          />
-          <Text>Metric:</Text>
+          /></Text>
+          <Text>Metric:
           <Controller
             control={control}
             render={({ onChange, onBlur, value }) => (
@@ -261,9 +266,9 @@ export default function EnterTipsForm() {
             name="metric4"
             rules={{ required: true }}
             defaultValue="1"
-          />
+          /></Text>
           {errors.metric4 && <Text>This is required. If server is to receive no cut, enter '0'</Text>}
-          <Text>Amount Contributed:</Text>
+          <Text>Amount:
           <Controller
             control={control}
             render={({ onChange, onBlur, value }) => (
@@ -280,11 +285,46 @@ export default function EnterTipsForm() {
             name="amount4"
             rules={{ required: true }}
             defaultValue="0"
-          />
+          /></Text>
           {errors.amount4 && <Text>This is required. If server contribution is zero, enter '0'</Text>}
         </View>
+        <View style={styles.container}>
+        <Text>Tipout:
+          <Controller
+            control={control}
+            render={({ onChange, onBlur, value }) => (
+              <TextInput
+                style={styles.input}
+                onBlur={onBlur}
+                onChangeText={value => {
+                  setTipOut(value)
+                  onChange(value)
+                }}
+                value={value}
+              />
+            )}
+            name="tipOut"
+            rules={{ required: true }}
+            defaultValue="25"
+          />%</Text>
+          {errors.amount4 && <Text>This is required. If tip out is zero, enter '0'</Text>}
+        </View>
+      <View>
+        <Text>Your current (rounded) total tips are ${Math.floor((tipTotal / 100) + toT)}</Text>
+        <Text>***</Text>
+        <Text>Live totals below.</Text>
+      </View>
+      <View style={styles.container}>
+        <Text>{server1} gets: ${s1}</Text>
+        <Text>{server2} gets: ${s2}</Text>
+        <Text>{server3} gets: ${s3}</Text>
+        <Text>{server4} gets: ${s4}</Text>
+        <Text>Tip out Total: ${toT}</Text>
+        <Text>***</Text>
+        <Text>Current (rounded) distribution total is: ${Math.floor(s1+s2+s3+s4+toT)}</Text>
+      </View>
 
-      <Button title="Calculate" onPress={handleSubmit(onSubmit)} />
+
     </ScrollView>
   )
 }
@@ -333,6 +373,8 @@ const styles = StyleSheet.create({
     fontSize: 17,
     lineHeight: 24,
     textAlign: 'center',
+    width: 75
+
   },
   helpContainer: {
     marginTop: 15,
