@@ -1,8 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, ImageBackground } from 'react-native';
 
-import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 
@@ -14,8 +13,9 @@ export default function LandingText() {
           style={styles.getStartedText}
           lightColor="rgba(0,0,0,0.8)"
           darkColor="rgba(255,255,255,0.8)">
-          Welcome to Pool House! The easiest way to split tips for the house!
+          Welcome to Pool House!
         </Text>
+        <MonoText>The easiest way to split tips!</MonoText>
         <View
           style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
           darkColor="rgba(255,255,255,0.05)"
@@ -26,46 +26,14 @@ export default function LandingText() {
           style={styles.getStartedText}
           lightColor="rgba(0,0,0,0.8)"
           darkColor="rgba(255,255,255,0.8)">
-          Step 1: Check your settings to make sure tip out rules are correct.
+          * For an equal split, use the same metric for everyone
         </Text>
-        <View
-          style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-          darkColor="rgba(255,255,255,0.05)"
-          lightColor="rgba(0,0,0,0.05)">
-          <MonoText>*******</MonoText>
-        </View>
         <Text
           style={styles.getStartedText}
           lightColor="rgba(0,0,0,0.8)"
           darkColor="rgba(255,255,255,0.8)">
-          Step 2: Enter names, role and amount of earned tips on the ENTER TIPS tab.
+          * All totals update as you add in new numbers
         </Text>
-        <View
-          style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-          darkColor="rgba(255,255,255,0.05)"
-          lightColor="rgba(0,0,0,0.05)">
-          <MonoText>*******</MonoText>
-        </View>
-        <Text
-          style={styles.getStartedText}
-          lightColor="rgba(0,0,0,0.8)"
-          darkColor="rgba(255,255,255,0.8)">
-          Step 3: View DISTRIBUTIONS to see how much each person should be paid.
-        </Text>
-        <View
-          style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-          darkColor="rgba(255,255,255,0.05)"
-          lightColor="rgba(0,0,0,0.05)">
-          <MonoText>*******</MonoText>
-        </View>
-      </View>
-
-      <View style={styles.helpContainer}>
-        <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-          <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
-            Tap here for help! (this still goes to the expo help page for now)
-          </Text>
-        </TouchableOpacity>
       </View>
     </View>
   );

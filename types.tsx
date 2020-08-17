@@ -1,3 +1,5 @@
+import { ParsedURL } from "expo-linking";
+
 export type RootStackParamList = {
   Root: undefined;
   NotFound: undefined;
@@ -33,6 +35,3 @@ export type FormInputs = {
   tipOut: string
 };
 
-// export type FormData = {
-//   Formdata: undefined
-// }
